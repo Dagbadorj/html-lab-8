@@ -1,41 +1,25 @@
+function loadXMLDoc(b) {
+  const xmlhttp = new XMLHttpRequest();
+  xmlhttp.onload = function () {
+    const xmlDoc = xmlhttp.responseXML;
+    const item = xmlDoc.getElementsByTagName("item");
+    myFunction(item, b);
+  }
+  xmlhttp.open("GET", "haha.xml", true);
+  xmlhttp.send();
+}
+var school = "";
 
-let xmlContent = '';
-let tableBooks = document.getElementById('item');
-fetch('news.xml').then((response)=> {
-    response.text().then((xml)=>{
-    xmlContent = xml;
+function myFunction(item, b) {
+  school += "<h1>" + item[b-1].getElementsByTagName("title")[0].childNodes[0].wholeText + "</h1>" 
++ "<p>" + item[b-1].getElementsByTagName("description")[0].childNodes[0].wholeText + "</p>";
+console.log(school);
+document.getElementById("haha").innerHTML = school;
+}
 
-    let parser = new DOMParser();
-    let xmlDOM = parser.parseFromString(xmlContent, 'application/xml');
-    let news = xmlDOM.querySelectorAll('item');
-
-        news.forEach(bookXmlNode => {
-
-            let row = document.getElementsByClassName('banner-sub-content');
-
-            //heading
-            let td = document.getElementsByClassName('hot-topic-content');
-            td.innerText = bookXmlNode.children[0].innerHTML;
-            row.appendChild(td);
-
-            //  title
-            td = document.getElementsByClassName('hot-topic-content');
-            td.innerText = bookXmlNode.children[1].innerHTML;
-            row.appendChild(td);
-                            
-            //price
-            td = document.getElementsByClassName('hot-topic-content');
-            td.innerText = '$ ' + bookXmlNode.children[3].innerHTML;
-            row.appendChild(td);
-
-            //description
-            td = document.getElementsByClassName('hot-topic-content');
-            td.innerText = bookXmlNode.children[5].innerHTML;
-            row.appendChild(td);
-
-            tableBooks.children[1].appendChild(row);
-                        
-        });
-                
-    });
-});   
+function oruulah(bagsh){
+document.cookie = bagsh;
+}
+function terMedee(){
+return document.cookie;
+}

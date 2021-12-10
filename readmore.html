@@ -2,69 +2,82 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <link rel="stylesheet" href="design.css">
+    <title>medee</title>
+   
+    <script src="script.js"></script>
 </head>
 <body>
+    <header>
+        <div class = "navigation-container">
+            <div class = "top-head">
+                <div class = "web-name">
+                    <h1>TECHNEWS</h1>
+                </div>
     
-    <div id='content'>
-        <table id='books' cellpadding='10px' style="text-align:left;">
-            <thead>
-                <tr>
-                    <th>Author</th>
-                    <th>Title</th>
-                    <th>Price</th>
-                    <th>Description</th>
-                </tr>                
-            </thead>
-            <tbody>
-
-            </tbody>
-        </table>
+                <div class = "ham-btn">
+                    <span>
+                        <i class = "fas fa-bars"></i>
+                    </span>
+                </div>
+    
+                <div class = "times-btn">
+                    <span>
+                        <i class = "fas fa-times"></i>
+                    </span>
+                </div>
+            </div>
+    
+            <!-- nav bar -->
+    
+            <div class = "nav-bar" id = "nav-bar">
+                <nav>
+                    <ul>
+                        <li><a href = "#">home</a></li>
+                        <li><a href = "#">current affairs</a></li>
+                        <li><a href = "#">archive</a></li>
+                        <li><a href = "#">featured</a></li>
+                        <li><a href = "#">broadcast</a></li>
+                        <li><a href = "#">category</a></li>
+                    </ul>
+                </nav>
+            </div>
+    
+            <!--social icons -->
+            <div class = "social-icons">
+                <ul>
+                    <li>
+                        <a href= "#"><i class = "fab fa-facebook"></i></a>
+                    </li>
+                    <li>
+                        <a href= "#"><i class = "fab fa-twitter"></i></a>
+                    </li>
+                    <li>
+                        <a href= "#"><i class = "fab fa-instagram"></i></a>
+                    </li>
+                    <li>
+                        <a href= "#"><i class = "fab fa-youtube"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <div>
+        <p>What just happened?</p>
     </div>
 
-    <script>
-        let xmlContent = '';
-        let tableBooks = document.getElementById('books');
-        fetch('books.xml').then((response)=> {
-            response.text().then((xml)=>{
-                xmlContent = xml;
 
-                let parser = new DOMParser();
-                let xmlDOM = parser.parseFromString(xmlContent, 'application/xml');
-                let books = xmlDOM.querySelectorAll('book');
+  <div id="haha"></div>
 
-                books.forEach(bookXmlNode => {
-
-                    let row = document.createElement('tr');
-
-                    //author
-                    let td = document.createElement('td');
-                    td.innerText = bookXmlNode.children[0].innerHTML;
-                    row.appendChild(td);
-
-                    //  title
-                    td = document.createElement('td');
-                    td.innerText = bookXmlNode.children[1].innerHTML;
-                    row.appendChild(td);
-                    
-                    //price
-                    td = document.createElement('td');
-                    td.innerText = '$ ' + bookXmlNode.children[3].innerHTML;
-                    row.appendChild(td);
-
-                    //description
-                    td = document.createElement('td');
-                    td.innerText = bookXmlNode.children[5].innerHTML;
-                    row.appendChild(td);
-
-                    tableBooks.children[1].appendChild(row);
-                    
-                });
-                
-            });
-        });    
-    </script>
 </body>
+<script> 
+
+       var bagsh = terMedee();
+    // console.log(bagsh);
+    loadXMLDoc(bagsh);
+
+ 
+</script>
 </html>
